@@ -44,7 +44,7 @@
             // 
             // buttonEncrypt
             // 
-            this.buttonEncrypt.Location = new System.Drawing.Point(432, 167);
+            this.buttonEncrypt.Location = new System.Drawing.Point(432, 446);
             this.buttonEncrypt.Name = "buttonEncrypt";
             this.buttonEncrypt.Size = new System.Drawing.Size(75, 34);
             this.buttonEncrypt.TabIndex = 10;
@@ -69,7 +69,8 @@
             // 
             // textBoxChiper1
             // 
-            this.textBoxChiper1.Location = new System.Drawing.Point(23, 207);
+            this.textBoxChiper1.Enabled = false;
+            this.textBoxChiper1.Location = new System.Drawing.Point(23, 183);
             this.textBoxChiper1.Multiline = true;
             this.textBoxChiper1.Name = "textBoxChiper1";
             this.textBoxChiper1.Size = new System.Drawing.Size(484, 64);
@@ -96,7 +97,7 @@
             // labelCiper1
             // 
             this.labelCiper1.AutoSize = true;
-            this.labelCiper1.Location = new System.Drawing.Point(20, 188);
+            this.labelCiper1.Location = new System.Drawing.Point(20, 164);
             this.labelCiper1.Name = "labelCiper1";
             this.labelCiper1.Size = new System.Drawing.Size(49, 16);
             this.labelCiper1.TabIndex = 13;
@@ -105,7 +106,7 @@
             // labelKey2
             // 
             this.labelKey2.AutoSize = true;
-            this.labelKey2.Location = new System.Drawing.Point(20, 286);
+            this.labelKey2.Location = new System.Drawing.Point(20, 262);
             this.labelKey2.Name = "labelKey2";
             this.labelKey2.Size = new System.Drawing.Size(40, 16);
             this.labelKey2.TabIndex = 14;
@@ -113,14 +114,15 @@
             // 
             // textBoxKey2
             // 
-            this.textBoxKey2.Location = new System.Drawing.Point(23, 305);
+            this.textBoxKey2.Location = new System.Drawing.Point(23, 281);
             this.textBoxKey2.Name = "textBoxKey2";
             this.textBoxKey2.Size = new System.Drawing.Size(484, 22);
             this.textBoxKey2.TabIndex = 15;
             // 
             // textBoxCiper2
             // 
-            this.textBoxCiper2.Location = new System.Drawing.Point(23, 360);
+            this.textBoxCiper2.Enabled = false;
+            this.textBoxCiper2.Location = new System.Drawing.Point(23, 339);
             this.textBoxCiper2.Multiline = true;
             this.textBoxCiper2.Name = "textBoxCiper2";
             this.textBoxCiper2.Size = new System.Drawing.Size(484, 64);
@@ -129,7 +131,7 @@
             // labelCiper2
             // 
             this.labelCiper2.AutoSize = true;
-            this.labelCiper2.Location = new System.Drawing.Point(20, 341);
+            this.labelCiper2.Location = new System.Drawing.Point(20, 320);
             this.labelCiper2.Name = "labelCiper2";
             this.labelCiper2.Size = new System.Drawing.Size(49, 16);
             this.labelCiper2.TabIndex = 17;
