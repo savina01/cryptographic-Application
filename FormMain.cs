@@ -125,7 +125,6 @@ namespace cryptographicApplication
 
             textBoxCiper2.Text = res;
         }
-
         private void buttonEncrypt_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(textBoxPlain.Text) &&
@@ -141,14 +140,45 @@ namespace cryptographicApplication
 
             if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
                 string.IsNullOrEmpty(textBoxKey2.Text))
-                    MessageBox.Show(
-                        "Enter in Key2.",
-                        "WARNING",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                MessageBox.Show(
+                    "Enter in Key2.",
+                    "WARNING",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
             else
+            {
                 TranspositionCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
+                MonoalphabeticCiper();
+            }
+        }
+        public void MonoalphabeticCiper()
+        {
+            //https://www.c-sharpcorner.com/article/monoalphabetic-cipher-in-c-sharp/
 
+            string plain = textBoxCiper2.Text;
+            string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            string c = "";
+
+            char[] cipher = new char[plain.Length];
+
+            for (int i = 0; i < plain.Length; ++i)
+            {
+                if (plain[i] == ' ')
+                    cipher[i] = ' ';
+                else
+                {
+                    int j = plain[i] - 97;
+                    cipher[i] = key[j];
+                }
+            }
+
+            for (int i = 0; i < plain.Length; i++)
+            {
+                c += cipher[i];
+            }
+
+            textBoxChiper3.Text = c;
         }
     }
 }

@@ -40,11 +40,13 @@
             this.textBoxKey2 = new System.Windows.Forms.TextBox();
             this.textBoxCiper2 = new System.Windows.Forms.TextBox();
             this.labelCiper2 = new System.Windows.Forms.Label();
+            this.labelCiper3 = new System.Windows.Forms.Label();
+            this.textBoxChiper3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonEncrypt
             // 
-            this.buttonEncrypt.Location = new System.Drawing.Point(432, 446);
+            this.buttonEncrypt.Location = new System.Drawing.Point(523, 523);
             this.buttonEncrypt.Name = "buttonEncrypt";
             this.buttonEncrypt.Size = new System.Drawing.Size(75, 34);
             this.buttonEncrypt.TabIndex = 10;
@@ -57,14 +59,14 @@
             this.textBoxPlain.Location = new System.Drawing.Point(23, 43);
             this.textBoxPlain.Multiline = true;
             this.textBoxPlain.Name = "textBoxPlain";
-            this.textBoxPlain.Size = new System.Drawing.Size(484, 48);
+            this.textBoxPlain.Size = new System.Drawing.Size(575, 48);
             this.textBoxPlain.TabIndex = 7;
             // 
             // textBoxKey1
             // 
             this.textBoxKey1.Location = new System.Drawing.Point(23, 125);
             this.textBoxKey1.Name = "textBoxKey1";
-            this.textBoxKey1.Size = new System.Drawing.Size(484, 22);
+            this.textBoxKey1.Size = new System.Drawing.Size(575, 22);
             this.textBoxKey1.TabIndex = 8;
             // 
             // textBoxChiper1
@@ -73,7 +75,7 @@
             this.textBoxChiper1.Location = new System.Drawing.Point(23, 183);
             this.textBoxChiper1.Multiline = true;
             this.textBoxChiper1.Name = "textBoxChiper1";
-            this.textBoxChiper1.Size = new System.Drawing.Size(484, 64);
+            this.textBoxChiper1.Size = new System.Drawing.Size(575, 64);
             this.textBoxChiper1.TabIndex = 9;
             // 
             // labelPlain
@@ -116,7 +118,7 @@
             // 
             this.textBoxKey2.Location = new System.Drawing.Point(23, 281);
             this.textBoxKey2.Name = "textBoxKey2";
-            this.textBoxKey2.Size = new System.Drawing.Size(484, 22);
+            this.textBoxKey2.Size = new System.Drawing.Size(575, 22);
             this.textBoxKey2.TabIndex = 15;
             // 
             // textBoxCiper2
@@ -125,7 +127,7 @@
             this.textBoxCiper2.Location = new System.Drawing.Point(23, 339);
             this.textBoxCiper2.Multiline = true;
             this.textBoxCiper2.Name = "textBoxCiper2";
-            this.textBoxCiper2.Size = new System.Drawing.Size(484, 64);
+            this.textBoxCiper2.Size = new System.Drawing.Size(575, 64);
             this.textBoxCiper2.TabIndex = 16;
             // 
             // labelCiper2
@@ -137,11 +139,31 @@
             this.labelCiper2.TabIndex = 17;
             this.labelCiper2.Text = "Ciper2:";
             // 
+            // labelCiper3
+            // 
+            this.labelCiper3.AutoSize = true;
+            this.labelCiper3.Location = new System.Drawing.Point(20, 423);
+            this.labelCiper3.Name = "labelCiper3";
+            this.labelCiper3.Size = new System.Drawing.Size(49, 16);
+            this.labelCiper3.TabIndex = 18;
+            this.labelCiper3.Text = "Ciper3:";
+            // 
+            // textBoxChiper3
+            // 
+            this.textBoxChiper3.Enabled = false;
+            this.textBoxChiper3.Location = new System.Drawing.Point(23, 442);
+            this.textBoxChiper3.Multiline = true;
+            this.textBoxChiper3.Name = "textBoxChiper3";
+            this.textBoxChiper3.Size = new System.Drawing.Size(575, 64);
+            this.textBoxChiper3.TabIndex = 19;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 492);
+            this.ClientSize = new System.Drawing.Size(620, 569);
+            this.Controls.Add(this.textBoxChiper3);
+            this.Controls.Add(this.labelCiper3);
             this.Controls.Add(this.labelCiper2);
             this.Controls.Add(this.textBoxCiper2);
             this.Controls.Add(this.textBoxKey2);
@@ -176,6 +198,8 @@
         private System.Windows.Forms.TextBox textBoxKey2;
         private System.Windows.Forms.TextBox textBoxCiper2;
         private System.Windows.Forms.Label labelCiper2;
+        private System.Windows.Forms.Label labelCiper3;
+        private System.Windows.Forms.TextBox textBoxChiper3;
     }
 }
 
