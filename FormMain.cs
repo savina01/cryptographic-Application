@@ -15,6 +15,7 @@ namespace cryptographicApplication
 
         //TODO
         //нов проект само за многоазбучното за курсовата работа
+        //декриптиране и интерфейса на формата
 
         public void PolyaplhabeticCiper()
         {
@@ -56,6 +57,8 @@ namespace cryptographicApplication
             }
             textBoxChiper1.Text = c;
         }
+
+        //помощна функция
         public int[] GetShiftIndexes(string key)
         {
             //https://www.programmingalgorithms.com/algorithm/transposition-cipher/
@@ -125,32 +128,6 @@ namespace cryptographicApplication
 
             textBoxCiper2.Text = res;
         }
-        private void buttonEncrypt_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(textBoxPlain.Text) &&
-                string.IsNullOrEmpty(textBoxKey1.Text))           
-                    MessageBox.Show(
-                        "Enter in Plain and Key1.",
-                        "WARNING",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                
-            else
-                PolyaplhabeticCiper();
-
-            if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
-                string.IsNullOrEmpty(textBoxKey2.Text))
-                MessageBox.Show(
-                    "Enter in Key2.",
-                    "WARNING",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            else
-            {
-                TranspositionCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
-                MonoalphabeticCiper();
-            }
-        }
         public void MonoalphabeticCiper()
         {
             //https://www.c-sharpcorner.com/article/monoalphabetic-cipher-in-c-sharp/
@@ -180,5 +157,32 @@ namespace cryptographicApplication
 
             textBoxChiper3.Text = c;
         }
+        private void buttonEncrypt_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxPlain.Text) &&
+                string.IsNullOrEmpty(textBoxKey1.Text))           
+                    MessageBox.Show(
+                        "Enter in Plain and Key1.",
+                        "WARNING",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                
+            else
+                PolyaplhabeticCiper();
+
+            if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
+                string.IsNullOrEmpty(textBoxKey2.Text))
+                MessageBox.Show(
+                    "Enter in Key2.",
+                    "WARNING",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            else
+            {
+                TranspositionCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
+                MonoalphabeticCiper();
+            }
+        }
+    
     }
 }
