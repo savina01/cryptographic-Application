@@ -42,6 +42,7 @@
             this.labelCiper2 = new System.Windows.Forms.Label();
             this.labelCiper3 = new System.Windows.Forms.Label();
             this.textBoxChiper3 = new System.Windows.Forms.TextBox();
+            this.buttonDecrypt = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonEncrypt
@@ -71,7 +72,6 @@
             // 
             // textBoxChiper1
             // 
-            this.textBoxChiper1.Enabled = false;
             this.textBoxChiper1.Location = new System.Drawing.Point(23, 183);
             this.textBoxChiper1.Multiline = true;
             this.textBoxChiper1.Name = "textBoxChiper1";
@@ -123,7 +123,6 @@
             // 
             // textBoxCiper2
             // 
-            this.textBoxCiper2.Enabled = false;
             this.textBoxCiper2.Location = new System.Drawing.Point(23, 339);
             this.textBoxCiper2.Multiline = true;
             this.textBoxCiper2.Name = "textBoxCiper2";
@@ -150,18 +149,28 @@
             // 
             // textBoxChiper3
             // 
-            this.textBoxChiper3.Enabled = false;
             this.textBoxChiper3.Location = new System.Drawing.Point(23, 442);
             this.textBoxChiper3.Multiline = true;
             this.textBoxChiper3.Name = "textBoxChiper3";
             this.textBoxChiper3.Size = new System.Drawing.Size(575, 64);
             this.textBoxChiper3.TabIndex = 19;
             // 
+            // buttonDecrypt
+            // 
+            this.buttonDecrypt.Location = new System.Drawing.Point(442, 523);
+            this.buttonDecrypt.Name = "buttonDecrypt";
+            this.buttonDecrypt.Size = new System.Drawing.Size(75, 34);
+            this.buttonDecrypt.TabIndex = 20;
+            this.buttonDecrypt.Text = "Decrypt";
+            this.buttonDecrypt.UseVisualStyleBackColor = true;
+            this.buttonDecrypt.Click += new System.EventHandler(this.buttonDecrypt_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 569);
+            this.Controls.Add(this.buttonDecrypt);
             this.Controls.Add(this.textBoxChiper3);
             this.Controls.Add(this.labelCiper3);
             this.Controls.Add(this.labelCiper2);
@@ -200,6 +209,7 @@
         private System.Windows.Forms.Label labelCiper2;
         private System.Windows.Forms.Label labelCiper3;
         private System.Windows.Forms.TextBox textBoxChiper3;
+        private System.Windows.Forms.Button buttonDecrypt;
     }
 }
 

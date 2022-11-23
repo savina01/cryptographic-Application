@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,7 +18,7 @@ namespace cryptographicApplication
         //нов проект само за многоазбучното за курсовата работа
         //декриптиране и интерфейса на формата
 
-        public void PolyaplhabeticCiper()
+        public void PolyaplhabeticEncryptCiper()
         {
             //https://www.youtube.com/watch?v=Tpd_ebRNvf0
             char[] cipher = new char[100];
@@ -34,19 +35,16 @@ namespace cryptographicApplication
 
             for (i = 0; i < plain.Length; i++)
             {
-                //проверка за край на ключа и започване на неговото повтаряне, ако думата е свършила
                 if (j == key.Length)
                     j = 0;
 
                 if ((plain[i] + (key[j] - 97)) > 122)
                 {
-                    //почти не се налага да влизаме тук
                     cipher[i] = Convert.ToChar(plain[i] + ((key[j] - 97) - 26));
                     j++;
                 }
                 else
                 {
-                    //намираме числото на c след като сме събрали числото на p с ключа
                     cipher[i] = Convert.ToChar(plain[i] + (key[j] - 97));
                     j++;
                 }
@@ -56,6 +54,43 @@ namespace cryptographicApplication
                 c += cipher[i];
             }
             textBoxChiper1.Text = c;
+        }
+        public void PolyaplhabeticDectyptCiper()
+        {
+            char[] plain = new char[100];
+
+            string p = "";
+
+            int i;
+            int j = 0;
+
+            string c = textBoxChiper1.Text;
+            char[] ciper = c.ToCharArray();
+            string k = textBoxKey1.Text;
+            char[] key = k.ToCharArray();
+
+            for(i = 0; i < ciper.Length; i++)
+            {
+                if (j == key.Length)
+                    j = 0;
+
+                if ((ciper[i] - (key[j] - 97)) < 122 &&
+                    (ciper[i] - (key[j] - 97)) > 98)
+                {
+                    plain[i] = Convert.ToChar(ciper[i] - (key[j] - 97));
+                    j++;
+                }
+                else
+                {
+                    plain[i] = Convert.ToChar(ciper[i] - ((key[j] - 97) - 26));
+                    j++;
+                }
+            }
+            for (i = 0; i < ciper.Length; i++)
+            {
+                p += plain[i];
+            }
+            textBoxPlain.Text = p;
         }
 
         //помощна функция
@@ -84,7 +119,7 @@ namespace cryptographicApplication
             return indexes;
 
         }
-        public void TranspositionCiper(string plain, string key, char padChar)
+        public void TranspositionEncryptCiper(string plain, string key, char padChar)
         {
             plain = (plain.Length % key.Length == 0) ? plain :
                 plain.PadRight(plain.Length - (plain.Length % key.Length) + key.Length, padChar);
@@ -128,6 +163,43 @@ namespace cryptographicApplication
 
             textBoxCiper2.Text = res;
         }
+        public void TranspositionDencryptCiper(string ciper, string key)
+        {
+            StringBuilder plain = new StringBuilder();
+
+            int totalChars = ciper.Length;
+            int totalColumns = (int)Math.Ceiling((double)totalChars / key.Length);
+            int totalRows = key.Length;
+            char[,] rowChars = new char[totalRows, totalColumns];
+            char[,] colChars = new char[totalColumns, totalRows];
+            char[,] unsortedColChars = new char[totalColumns, totalRows];
+            int currentRow, currentColumn, i, j;
+            int[] shiftIndexes = GetShiftIndexes(key);
+
+            for(i = 0; i < totalChars; ++i)
+            {
+                currentRow = i / totalColumns;
+                currentColumn = i % totalColumns;
+                rowChars[currentRow, currentColumn] = ciper[i];
+            }
+
+            for (i = 0; i < totalRows; ++i)
+                for (j = 0; j < totalColumns; ++j)
+                    colChars[j, i] = rowChars[i, j];
+
+            for (i = 0; i < totalColumns; ++i)
+                for (j = 0; j < totalRows; ++j)
+                    unsortedColChars[i, j] = colChars[i, shiftIndexes[j]];
+
+            for(i = 0; i < totalColumns; ++i)
+            {
+                currentRow = i / totalRows;
+                currentColumn = i % totalRows;
+                plain.Append(unsortedColChars[currentRow, currentColumn]);
+            }
+
+            textBoxChiper1.Text = plain.ToString();
+        }
         public void MonoalphabeticCiper()
         {
             //https://www.c-sharpcorner.com/article/monoalphabetic-cipher-in-c-sharp/
@@ -168,7 +240,7 @@ namespace cryptographicApplication
                         MessageBoxIcon.Warning);
                 
             else
-                PolyaplhabeticCiper();
+                PolyaplhabeticEncryptCiper();
 
             if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
                 string.IsNullOrEmpty(textBoxKey2.Text))
@@ -179,10 +251,37 @@ namespace cryptographicApplication
                     MessageBoxIcon.Warning);
             else
             {
-                TranspositionCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
+                TranspositionEncryptCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
                 MonoalphabeticCiper();
             }
         }
-    
+
+        private void buttonDecrypt_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
+                string.IsNullOrEmpty(textBoxKey1.Text))
+                MessageBox.Show(
+                        "Enter in Ciper1 and Key1.",
+                        "WARNING",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+            else
+                PolyaplhabeticDectyptCiper();
+
+            if (string.IsNullOrEmpty(textBoxKey2.Text) &&
+                string.IsNullOrEmpty(textBoxCiper2.Text))
+                MessageBox.Show(
+                        "Enter in Ciper2 and Key2.",
+                        "WARNING",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+            else
+                TranspositionDencryptCiper(textBoxCiper2.Text, textBoxKey2.Text);
+
+        }
+        public void polyencrypt()
+        {
+
+        }
     }
 }
