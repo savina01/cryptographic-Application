@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Web;
 using System.Windows.Forms;
 
 namespace cryptographicApplication
@@ -93,7 +95,6 @@ namespace cryptographicApplication
             textBoxPlain.Text = p;
         }
 
-        //помощна функция
         public int[] GetShiftIndexes(string key)
         {
             //https://www.programmingalgorithms.com/algorithm/transposition-cipher/
@@ -200,11 +201,12 @@ namespace cryptographicApplication
 
             textBoxChiper1.Text = plain.ToString();
         }
-        public void MonoalphabeticCiper()
+        public void MonoalphabeticEncryptCiper()
         {
             //https://www.c-sharpcorner.com/article/monoalphabetic-cipher-in-c-sharp/
 
             string plain = textBoxCiper2.Text;
+            
             string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
             string c = "";
@@ -229,9 +231,38 @@ namespace cryptographicApplication
 
             textBoxChiper3.Text = c;
         }
+        public void MonoalphabeticDecryptCiper()
+        {
+            string ciper = textBoxChiper3.Text;
+            string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            string p = "";
+
+            char[] plain = new char[ciper.Length];
+
+            for(int i = 0; i < ciper.Length; i++)
+            {
+                if (ciper[i] == ' ')
+                    plain[i] = ' ';
+                else
+                {
+                    int j = key.IndexOf(ciper[i]) + 97;
+                    plain[i] = (char)j;
+                }
+            }
+
+            for (int i = 0; i < ciper.Length; i++)
+            {
+                p += plain[i];
+            }
+            textBoxCiper2.Text = p;
+        }
         private void buttonEncrypt_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textBoxPlain.Text) &&
+            CheckKeysLength();
+            isNumeric(textBoxPlain.Text, textBoxKey1.Text, textBoxKey2.Text, textBoxChiper1.Text, textBoxCiper2.Text, textBoxChiper3.Text);
+
+            if (string.IsNullOrEmpty(textBoxPlain.Text) ||
                 string.IsNullOrEmpty(textBoxKey1.Text))           
                     MessageBox.Show(
                         "Enter in Plain and Key1.",
@@ -242,7 +273,7 @@ namespace cryptographicApplication
             else
                 PolyaplhabeticEncryptCiper();
 
-            if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
+            if (string.IsNullOrEmpty(textBoxChiper1.Text) ||
                 string.IsNullOrEmpty(textBoxKey2.Text))
                 MessageBox.Show(
                     "Enter in Key2.",
@@ -252,12 +283,49 @@ namespace cryptographicApplication
             else
             {
                 TranspositionEncryptCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
-                MonoalphabeticCiper();
+                MonoalphabeticEncryptCiper();
+            }
+        }
+        public void CheckKeysLength()
+        {
+            if ((textBoxKey1.Text.Length > textBoxChiper1.Text.Length) ||
+                (textBoxKey1.Text.Length > textBoxCiper2.Text.Length) ||
+                (textBoxKey1.Text.Length > textBoxPlain.Text.Length) ||
+                (textBoxKey2.Text.Length > textBoxChiper1.Text.Length) ||
+                (textBoxKey2.Text.Length > textBoxCiper2.Text.Length))
+            {
+                MessageBox.Show(
+                        "Keys out of bounce. Check them again.",
+                        "WARNING",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                textBoxKey1.Clear();
+                textBoxKey2.Clear();                
+            }
+        }
+        public void isNumeric(string plain, string key1, string key2, string ciper1, string ciper2, string ciper3)
+        {
+            if((Regex.IsMatch(plain,@"^d+$")) ||
+                (Regex.IsMatch(key1, @"^d+$")) ||
+                Regex.IsMatch(key2, @"^d+$") ||
+                Regex.IsMatch(ciper1, @"^d+$") ||
+                Regex.IsMatch(ciper2, @"^d+$") ||
+                Regex.IsMatch(ciper3, @"^d+$"))
+            {
+                MessageBox.Show(
+                        "You have integers. Do it without them. The App will restart :)",
+                        "Stop",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Hand);
+                Application.Restart();            
             }
         }
 
         private void buttonDecrypt_Click(object sender, EventArgs e)
         {
+            CheckKeysLength();
+            isNumeric(textBoxPlain.Text,textBoxKey1.Text,textBoxKey2.Text,textBoxChiper1.Text,textBoxCiper2.Text,textBoxChiper3.Text);
+
             if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
                 string.IsNullOrEmpty(textBoxKey1.Text))
                 MessageBox.Show(
@@ -278,10 +346,14 @@ namespace cryptographicApplication
             else
                 TranspositionDencryptCiper(textBoxCiper2.Text, textBoxKey2.Text);
 
-        }
-        public void polyencrypt()
-        {
-
+            if (string.IsNullOrEmpty(textBoxChiper3.Text))
+                MessageBox.Show(
+                        "Enter in Ciper3.",
+                        "WARNING",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+            else
+                MonoalphabeticDecryptCiper();
         }
     }
 }
