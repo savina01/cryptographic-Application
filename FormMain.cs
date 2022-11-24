@@ -191,7 +191,7 @@ namespace cryptographicApplication
                 for (j = 0; j < totalRows; ++j)
                     unsortedColChars[i, j] = colChars[i, shiftIndexes[j]];
 
-            for(i = 0; i < totalColumns; ++i)
+            for(i = 0; i < ciper.Length; ++i)
             {
                 currentRow = i / totalRows;
                 currentColumn = i % totalRows;
