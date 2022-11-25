@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Web;
 using System.Windows.Forms;
 
 namespace cryptographicApplication
@@ -16,13 +14,8 @@ namespace cryptographicApplication
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        //TODO
-        //нов проект само за многоазбучното за курсовата работа
-        //декриптиране и интерфейса на формата
-
         public void PolyaplhabeticEncryptCiper()
         {
-            //https://www.youtube.com/watch?v=Tpd_ebRNvf0
             char[] cipher = new char[100];
 
             string c = "";
@@ -97,16 +90,11 @@ namespace cryptographicApplication
 
         public int[] GetShiftIndexes(string key)
         {
-            //https://www.programmingalgorithms.com/algorithm/transposition-cipher/
-
-            //взимаме индексите на ключа
             int[] indexes =  new int[key.Length];
 
-            //лист от двойки ключ и стойност
             List<KeyValuePair<int,char>> sortedKey = new List<KeyValuePair<int, char>>();
             int i;
 
-            //добавяме всички индекси със стойности в sortedKey
             for(i = 0; i < key.Length; i++)
                 sortedKey.Add(new KeyValuePair<int, char> (i, key[i]));
 
@@ -118,7 +106,6 @@ namespace cryptographicApplication
             for (i = 0; i < key.Length; i++)
                 indexes[sortedKey[i].Key] = i;
             return indexes;
-
         }
         public void TranspositionEncryptCiper(string plain, string key, char padChar)
         {
@@ -203,8 +190,6 @@ namespace cryptographicApplication
         }
         public void MonoalphabeticEncryptCiper()
         {
-            //https://www.c-sharpcorner.com/article/monoalphabetic-cipher-in-c-sharp/
-
             string plain = textBoxCiper2.Text;
             
             string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -260,7 +245,13 @@ namespace cryptographicApplication
         private void buttonEncrypt_Click(object sender, EventArgs e)
         {
             CheckKeysLength();
-            isNumeric(textBoxPlain.Text, textBoxKey1.Text, textBoxKey2.Text, textBoxChiper1.Text, textBoxCiper2.Text, textBoxChiper3.Text);
+            isNumeric(
+                textBoxPlain.Text, 
+                textBoxKey1.Text, 
+                textBoxKey2.Text, 
+                textBoxChiper1.Text,
+                textBoxCiper2.Text, 
+                textBoxChiper3.Text);
 
             if (string.IsNullOrEmpty(textBoxPlain.Text) ||
                 string.IsNullOrEmpty(textBoxKey1.Text))           
@@ -324,7 +315,13 @@ namespace cryptographicApplication
         private void buttonDecrypt_Click(object sender, EventArgs e)
         {
             CheckKeysLength();
-            isNumeric(textBoxPlain.Text,textBoxKey1.Text,textBoxKey2.Text,textBoxChiper1.Text,textBoxCiper2.Text,textBoxChiper3.Text);
+            isNumeric(
+                textBoxPlain.Text,
+                textBoxKey1.Text,
+                textBoxKey2.Text,
+                textBoxChiper1.Text,
+                textBoxCiper2.Text,
+                textBoxChiper3.Text);
 
             if (string.IsNullOrEmpty(textBoxChiper1.Text) &&
                 string.IsNullOrEmpty(textBoxKey1.Text))
