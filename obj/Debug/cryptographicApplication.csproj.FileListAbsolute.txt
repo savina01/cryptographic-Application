@@ -1,0 +1,22 @@
+C:\Users\user\Desktop\cryptographicApplication\bin\Debug\cryptographicApplication.exe.config
+C:\Users\user\Desktop\cryptographicApplication\bin\Debug\cryptographicApplication.exe
+C:\Users\user\Desktop\cryptographicApplication\bin\Debug\cryptographicApplication.pdb
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.FormMain.resources
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.Properties.Resources.resources
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.GenerateResource.cache
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.exe
+C:\Users\user\Desktop\cryptographicApplication\obj\Debug\cryptographicApplication.pdb
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\bin\Debug\cryptographicApplication.exe.config
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\bin\Debug\cryptographicApplication.exe
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\bin\Debug\cryptographicApplication.pdb
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.SuggestedBindingRedirects.cache
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.FormMain.resources
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.Properties.Resources.resources
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.GenerateResource.cache
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.exe
+C:\Users\user\Desktop\uni\5 семестър\криптография\курсов проект\cryptographicApplication\obj\Debug\cryptographicApplication.pdb
