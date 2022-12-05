@@ -287,10 +287,20 @@ namespace cryptographicApplication
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
             else
-            {
                 TranspositionEncryptCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
+            
+
+            if(string.IsNullOrEmpty(textBoxCiper2.Text) ||
+               string.IsNullOrEmpty(textBoxKey3.Text) ||
+               string.IsNullOrEmpty(textBoxKey4.Text))
+                MessageBox.Show(
+                    "Enter in Key3 and Key4.",
+                    "WARNING",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            else
                 SimpleMonoalphabeticEncryptCiper();
-            }
+
         }
         private void buttonDecrypt_Click(object sender, EventArgs e)
         {
@@ -315,9 +325,11 @@ namespace cryptographicApplication
             else
                 TranspositionDencryptCiper(textBoxCiper2.Text, textBoxKey2.Text);
 
-            if (string.IsNullOrEmpty(textBoxChiper3.Text))
+            if (string.IsNullOrEmpty(textBoxChiper3.Text) ||
+                string.IsNullOrEmpty(textBoxKey3.Text) ||
+                string.IsNullOrEmpty(textBoxKey4.Text))
                 MessageBox.Show(
-                        "Enter in Ciper3.",
+                        "Enter in Ciper, Key3 and Key4.",
                         "WARNING",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
