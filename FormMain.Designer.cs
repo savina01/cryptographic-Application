@@ -45,11 +45,15 @@
             this.buttonDecrypt = new System.Windows.Forms.Button();
             this.labelSymbols = new System.Windows.Forms.Label();
             this.labelSymbolsAll = new System.Windows.Forms.Label();
+            this.labelKey3 = new System.Windows.Forms.Label();
+            this.labelKey4 = new System.Windows.Forms.Label();
+            this.textBoxKey3 = new System.Windows.Forms.TextBox();
+            this.textBoxKey4 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonEncrypt
             // 
-            this.buttonEncrypt.Location = new System.Drawing.Point(523, 580);
+            this.buttonEncrypt.Location = new System.Drawing.Point(520, 689);
             this.buttonEncrypt.Name = "buttonEncrypt";
             this.buttonEncrypt.Size = new System.Drawing.Size(75, 34);
             this.buttonEncrypt.TabIndex = 10;
@@ -154,16 +158,16 @@
             // 
             this.labelCiper3.AutoSize = true;
             this.labelCiper3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCiper3.Location = new System.Drawing.Point(20, 481);
+            this.labelCiper3.Location = new System.Drawing.Point(20, 591);
             this.labelCiper3.Name = "labelCiper3";
-            this.labelCiper3.Size = new System.Drawing.Size(156, 18);
+            this.labelCiper3.Size = new System.Drawing.Size(205, 18);
             this.labelCiper3.TabIndex = 18;
-            this.labelCiper3.Text = "Monoalphabetic Ciper:";
+            this.labelCiper3.Text = "Simple Monoalphabetic Ciper:";
             // 
             // textBoxChiper3
             // 
             this.textBoxChiper3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxChiper3.Location = new System.Drawing.Point(23, 500);
+            this.textBoxChiper3.Location = new System.Drawing.Point(23, 610);
             this.textBoxChiper3.Multiline = true;
             this.textBoxChiper3.Name = "textBoxChiper3";
             this.textBoxChiper3.Size = new System.Drawing.Size(575, 64);
@@ -171,7 +175,7 @@
             // 
             // buttonDecrypt
             // 
-            this.buttonDecrypt.Location = new System.Drawing.Point(442, 580);
+            this.buttonDecrypt.Location = new System.Drawing.Point(439, 689);
             this.buttonDecrypt.Name = "buttonDecrypt";
             this.buttonDecrypt.Size = new System.Drawing.Size(75, 34);
             this.buttonDecrypt.TabIndex = 20;
@@ -201,11 +205,51 @@
             this.labelSymbolsAll.TabIndex = 22;
             this.labelSymbolsAll.Text = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z";
             // 
+            // labelKey3
+            // 
+            this.labelKey3.AutoSize = true;
+            this.labelKey3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelKey3.Location = new System.Drawing.Point(23, 475);
+            this.labelKey3.Name = "labelKey3";
+            this.labelKey3.Size = new System.Drawing.Size(45, 18);
+            this.labelKey3.TabIndex = 23;
+            this.labelKey3.Text = "Key3:";
+            // 
+            // labelKey4
+            // 
+            this.labelKey4.AutoSize = true;
+            this.labelKey4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelKey4.Location = new System.Drawing.Point(22, 532);
+            this.labelKey4.Name = "labelKey4";
+            this.labelKey4.Size = new System.Drawing.Size(45, 18);
+            this.labelKey4.TabIndex = 24;
+            this.labelKey4.Text = "Key4:";
+            // 
+            // textBoxKey3
+            // 
+            this.textBoxKey3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxKey3.Location = new System.Drawing.Point(23, 498);
+            this.textBoxKey3.Name = "textBoxKey3";
+            this.textBoxKey3.Size = new System.Drawing.Size(575, 24);
+            this.textBoxKey3.TabIndex = 25;
+            // 
+            // textBoxKey4
+            // 
+            this.textBoxKey4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxKey4.Location = new System.Drawing.Point(23, 555);
+            this.textBoxKey4.Name = "textBoxKey4";
+            this.textBoxKey4.Size = new System.Drawing.Size(575, 24);
+            this.textBoxKey4.TabIndex = 26;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 627);
+            this.ClientSize = new System.Drawing.Size(624, 753);
+            this.Controls.Add(this.textBoxKey4);
+            this.Controls.Add(this.textBoxKey3);
+            this.Controls.Add(this.labelKey4);
+            this.Controls.Add(this.labelKey3);
             this.Controls.Add(this.labelSymbolsAll);
             this.Controls.Add(this.labelSymbols);
             this.Controls.Add(this.buttonDecrypt);
@@ -251,6 +295,10 @@
         private System.Windows.Forms.Button buttonDecrypt;
         private System.Windows.Forms.Label labelSymbols;
         private System.Windows.Forms.Label labelSymbolsAll;
+        private System.Windows.Forms.Label labelKey3;
+        private System.Windows.Forms.Label labelKey4;
+        private System.Windows.Forms.TextBox textBoxKey3;
+        private System.Windows.Forms.TextBox textBoxKey4;
     }
 }
 

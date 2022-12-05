@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
+using System.Security.Authentication;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -188,24 +190,31 @@ namespace cryptographicApplication
 
             textBoxChiper1.Text = plain.ToString();
         }
-        public void MonoalphabeticEncryptCiper()
+        public void SimpleMonoalphabeticEncryptCiper()
         {
             string plain = textBoxCiper2.Text;
-            
-            string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            string k1 = textBoxKey3.Text;
+            string k2 = textBoxKey4.Text;
+
+            int k1Int = int.Parse(k1);
+            int k2Int = int.Parse(k2);
 
             string c = "";
-
             char[] cipher = new char[plain.Length];
 
-            for (int i = 0; i < plain.Length; ++i)
+            string m = "abcdefghijklmnopqrstuvwxyz";
+            char[] arr = m.ToCharArray();
+
+            for (int i = 0; i < plain.Length; i++)
             {
                 if (plain[i] == ' ')
                     cipher[i] = ' ';
                 else
                 {
-                    int j = plain[i] - 97;
-                    cipher[i] = key[j];
+                    int index = plain[i]+1;
+                    int j = ((k1Int * (index - 97)) + k2Int) % 26;
+                    cipher[i] = arr[j-1];
                 }
             }
 
@@ -216,23 +225,37 @@ namespace cryptographicApplication
 
             textBoxChiper3.Text = c;
         }
-        public void MonoalphabeticDecryptCiper()
+        public void SimpleMonoalphabeticDecryptCiper()
         {
             string ciper = textBoxChiper3.Text;
-            string key = "zyxwvutsrqponmlkjihgfedcbaABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            string k1 = textBoxKey3.Text;
+            string k2 = textBoxKey4.Text;
+
+            int k1Int = int.Parse(k1);
+            int k2Int = int.Parse(k2);
 
             string p = "";
 
             char[] plain = new char[ciper.Length];
 
-            for(int i = 0; i < ciper.Length; i++)
+            string m = "abcdefghijklmnopqrstuvwxyz";
+            char[] arr = m.ToCharArray();
+
+            for (int i = 0; i < ciper.Length; i++)
             {
                 if (ciper[i] == ' ')
                     plain[i] = ' ';
                 else
                 {
-                    int j = key.IndexOf(ciper[i]) + 97;
-                    plain[i] = (char)j;
+                    int j = ciper[i];
+                    int index = 0;
+
+                    if (i < 4)
+                        index = (((j - k2Int) / k1Int) + 10 * i) % 26;
+                    else
+                        index = ((((j - k2Int) / k1Int) + 10 * (i % 4)) % 26);
+                    plain[i] = arr[index+3];
                 }
             }
 
@@ -266,7 +289,7 @@ namespace cryptographicApplication
             else
             {
                 TranspositionEncryptCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
-                MonoalphabeticEncryptCiper();
+                SimpleMonoalphabeticEncryptCiper();
             }
         }
         private void buttonDecrypt_Click(object sender, EventArgs e)
@@ -299,7 +322,7 @@ namespace cryptographicApplication
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
             else
-                MonoalphabeticDecryptCiper();
+                SimpleMonoalphabeticDecryptCiper();
         }
     }
 }
