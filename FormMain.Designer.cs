@@ -211,9 +211,9 @@
             this.labelKey3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelKey3.Location = new System.Drawing.Point(23, 475);
             this.labelKey3.Name = "labelKey3";
-            this.labelKey3.Size = new System.Drawing.Size(45, 18);
+            this.labelKey3.Size = new System.Drawing.Size(109, 18);
             this.labelKey3.TabIndex = 23;
-            this.labelKey3.Text = "Key3:";
+            this.labelKey3.Text = "Key3: (number)";
             // 
             // labelKey4
             // 
@@ -221,9 +221,9 @@
             this.labelKey4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelKey4.Location = new System.Drawing.Point(22, 532);
             this.labelKey4.Name = "labelKey4";
-            this.labelKey4.Size = new System.Drawing.Size(45, 18);
+            this.labelKey4.Size = new System.Drawing.Size(109, 18);
             this.labelKey4.TabIndex = 24;
-            this.labelKey4.Text = "Key4:";
+            this.labelKey4.Text = "Key4: (number)";
             // 
             // textBoxKey3
             // 
