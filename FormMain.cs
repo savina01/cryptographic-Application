@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using System.Security.Authentication;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -25,9 +23,9 @@ namespace cryptographicApplication
             int i;
             int j = 0;
 
-            string p = textBoxPlain.Text;
+            string p = textBoxPlain.Text.ToLower();
             char[] plain = p.ToCharArray();
-            string k = textBoxKey1.Text;
+            string k = textBoxKey1.Text.ToLower();
             char[] key = k.ToCharArray();
 
             for (i = 0; i < plain.Length; i++)
@@ -35,14 +33,14 @@ namespace cryptographicApplication
                 if (j == key.Length)
                     j = 0;
 
-                if ((plain[i] + (key[j] - 97)) > 122)
+                if ((plain[i] + (key[j] - 96)) > 122)
                 {
-                    cipher[i] = Convert.ToChar(plain[i] + ((key[j] - 97) - 26));
+                    cipher[i] = Convert.ToChar(plain[i] + ((key[j] - 96) - 26));
                     j++;
                 }
                 else
                 {
-                    cipher[i] = Convert.ToChar(plain[i] + (key[j] - 97));
+                    cipher[i] = Convert.ToChar(plain[i] + (key[j] - 96));
                     j++;
                 }
             }
@@ -61,25 +59,25 @@ namespace cryptographicApplication
             int i;
             int j = 0;
 
-            string c = textBoxChiper1.Text;
+            string c = textBoxChiper1.Text.ToLower();
             char[] ciper = c.ToCharArray();
-            string k = textBoxKey1.Text;
+            string k = textBoxKey1.Text.ToLower();
             char[] key = k.ToCharArray();
 
-            for(i = 0; i < ciper.Length; i++)
+            for (i = 0; i < ciper.Length; i++)
             {
                 if (j == key.Length)
                     j = 0;
 
                 if ((ciper[i] - (key[j] - 97)) < 122 &&
-                    (ciper[i] - (key[j] - 97)) > 98)
+                    (ciper[i] - (key[j] - 97)) >= 98)
                 {
-                    plain[i] = Convert.ToChar(ciper[i] - (key[j] - 97));
+                    plain[i] = Convert.ToChar(ciper[i] - (key[j] - 96));
                     j++;
                 }
                 else
                 {
-                    plain[i] = Convert.ToChar(ciper[i] - ((key[j] - 97) - 26));
+                    plain[i] = Convert.ToChar(ciper[i] - ((key[j] - 96) - 26));
                     j++;
                 }
             }
@@ -92,13 +90,13 @@ namespace cryptographicApplication
 
         public int[] GetShiftIndexes(string key)
         {
-            int[] indexes =  new int[key.Length];
+            int[] indexes = new int[key.Length];
 
-            List<KeyValuePair<int,char>> sortedKey = new List<KeyValuePair<int, char>>();
+            List<KeyValuePair<int, char>> sortedKey = new List<KeyValuePair<int, char>>();
             int i;
 
-            for(i = 0; i < key.Length; i++)
-                sortedKey.Add(new KeyValuePair<int, char> (i, key[i]));
+            for (i = 0; i < key.Length; i++)
+                sortedKey.Add(new KeyValuePair<int, char>(i, key[i]));
 
             sortedKey.Sort(
                 delegate (KeyValuePair<int, char> pair1, KeyValuePair<int, char> pair2)
@@ -142,7 +140,7 @@ namespace cryptographicApplication
                 for (j = 0; j < totalRows; ++j)
                     sortedColChars[shiftIndexes[i], j] = colChars[i, j];
 
-            for(i = 0; i < totalChars; ++i)
+            for (i = 0; i < totalChars; ++i)
             {
                 currentRow = i / totalRows;
                 currentColumn = i % totalRows;
@@ -166,7 +164,7 @@ namespace cryptographicApplication
             int currentRow, currentColumn, i, j;
             int[] shiftIndexes = GetShiftIndexes(key);
 
-            for(i = 0; i < totalChars; ++i)
+            for (i = 0; i < totalChars; ++i)
             {
                 currentRow = i / totalColumns;
                 currentColumn = i % totalColumns;
@@ -181,7 +179,7 @@ namespace cryptographicApplication
                 for (j = 0; j < totalRows; ++j)
                     unsortedColChars[i, j] = colChars[i, shiftIndexes[j]];
 
-            for(i = 0; i < ciper.Length; ++i)
+            for (i = 0; i < ciper.Length; ++i)
             {
                 currentRow = i / totalRows;
                 currentColumn = i % totalRows;
@@ -212,9 +210,9 @@ namespace cryptographicApplication
                     cipher[i] = ' ';
                 else
                 {
-                    int index = plain[i]+1;
+                    int index = plain[i] + 1;
                     int j = ((k1Int * (index - 97)) + k2Int) % 26;
-                    cipher[i] = arr[j-1];
+                    cipher[i] = arr[j - 1];
                 }
             }
 
@@ -227,7 +225,7 @@ namespace cryptographicApplication
         }
         public void SimpleMonoalphabeticDecryptCiper()
         {
-            string ciper = textBoxChiper3.Text;
+            string ciper = textBoxChiper3.Text.ToLower();
 
             string k1 = textBoxKey3.Text;
             string k2 = textBoxKey4.Text;
@@ -254,8 +252,8 @@ namespace cryptographicApplication
                     if (i < 4)
                         index = (((j - k2Int) / k1Int) + 10 * i) % 26;
                     else
-                        index = ((((j - k2Int) / k1Int) + 10 * (i % 4)) % 26);
-                    plain[i] = arr[index+3];
+                        index = (((j - k2Int) / k1Int) + 10 * (i % 4)) % 26;
+                    plain[i] = arr[index + 3];
                 }
             }
 
@@ -269,15 +267,18 @@ namespace cryptographicApplication
         {
 
             if (string.IsNullOrEmpty(textBoxPlain.Text) ||
-                string.IsNullOrEmpty(textBoxKey1.Text))           
-                    MessageBox.Show(
-                        "Enter in Plain and Key1.",
-                        "WARNING",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                
+                string.IsNullOrEmpty(textBoxKey1.Text))
+                MessageBox.Show(
+                    "Enter in Plain and Key1.",
+                    "WARNING",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
             else
+            {
                 PolyaplhabeticEncryptCiper();
+                ValidateString(textBoxPlain.Text);
+            }
 
             if (string.IsNullOrEmpty(textBoxChiper1.Text) ||
                 string.IsNullOrEmpty(textBoxKey2.Text))
@@ -288,9 +289,9 @@ namespace cryptographicApplication
                     MessageBoxIcon.Warning);
             else
                 TranspositionEncryptCiper(textBoxChiper1.Text, textBoxKey2.Text, '-');
-            
 
-            if(string.IsNullOrEmpty(textBoxCiper2.Text) ||
+
+            if (string.IsNullOrEmpty(textBoxCiper2.Text) ||
                string.IsNullOrEmpty(textBoxKey3.Text) ||
                string.IsNullOrEmpty(textBoxKey4.Text))
                 MessageBox.Show(
@@ -300,6 +301,7 @@ namespace cryptographicApplication
                     MessageBoxIcon.Warning);
             else
                 SimpleMonoalphabeticEncryptCiper();
+            ValidateInt();
 
         }
         private void buttonDecrypt_Click(object sender, EventArgs e)
@@ -314,6 +316,7 @@ namespace cryptographicApplication
                         MessageBoxIcon.Warning);
             else
                 PolyaplhabeticDectyptCiper();
+            
 
             if (string.IsNullOrEmpty(textBoxKey2.Text) &&
                 string.IsNullOrEmpty(textBoxCiper2.Text))
@@ -334,7 +337,32 @@ namespace cryptographicApplication
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
             else
+            {
+                ValidateString(textBoxChiper3.Text);
                 SimpleMonoalphabeticDecryptCiper();
+            }
+
+            ValidateInt();
+        }
+        public void ValidateInt()
+        {
+            int value;
+            if (!int.TryParse(textBoxKey3.Text, out value))
+                MessageBox.Show(
+                    "Wrong value for key3 or key4",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            else
+            {
+                SimpleMonoalphabeticEncryptCiper();
+                SimpleMonoalphabeticDecryptCiper();
+            }
+
+        }
+        public void ValidateString(string input)
+        {
+            Regex.IsMatch(input, @"^[a-zA-Z]+$");
         }
     }
 }
